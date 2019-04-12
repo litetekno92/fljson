@@ -11,7 +11,7 @@ class FetchData extends StatefulWidget {
 
 class _FetchDataState extends State<FetchData> {
   // List<Photo> list = List();
-  var list = new List<Photo>();
+  var photos = new List<Photo>();
   var isLoading = false;
 
   _fetchData() {
@@ -21,7 +21,7 @@ class _FetchDataState extends State<FetchData> {
     API.fetchData().then((response) {
       setState(() {
         Iterable list = json.decode(response.body);
-        list = list.map((model) => Photo.fromJson(model)).toList();
+        photos = list.map((model) => Photo.fromJson(model)).toList();
         isLoading = false;
       });
     });
@@ -43,9 +43,9 @@ class _FetchDataState extends State<FetchData> {
           title: Text("Fetch Data JSON"),
         ),
         body: ListView.builder(
-          itemCount: list.length,
+          itemCount: photos.length,
           itemBuilder: (context, index) {
-            return ListTile(title: Text(list[index].title));
+            return ListTile(title: Text(photos[index].title));
           },
         ));
   }
