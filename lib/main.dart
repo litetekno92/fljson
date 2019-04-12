@@ -4,7 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:fljson/photo.dart';
 import 'package:fljson/API.dart';
 
-void main() => runApp(MainFetchData());
+void main() => runApp(Myapp());
+
+class MyApp extends StatelessWidget {
+  @override
+  build(context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'My Http App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MainFetchData(),
+    );
+  }
+}
+
 
 class MainFetchData extends StatefulWidget {
   @override
