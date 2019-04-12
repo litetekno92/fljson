@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fljson/photo.dart';
 import 'package:fljson/API.dart';
 
-void main() => runApp(Myapp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
