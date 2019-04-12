@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fljson/photo.dart';
 import 'package:http/http.dart' as http;
+import 'package:fljson/API.dart';
 
 class MainFetchData extends StatefulWidget {
   @override
@@ -10,26 +11,52 @@ class MainFetchData extends StatefulWidget {
 }
 
 class _MainFetchDataState extends State<MainFetchData> {
-  List<Photo> list = List();
-  var isLoading = false;
+  // List<Photo> list = List();
+    var list = new List<Photo>();
+    var isLoading = false;
 
-  _fetchData() async {
+  _fetchData() {
     setState(() {
       isLoading = true;
     });
-    final response =
-        await http.get("https://jsonplaceholder.typicode.com/photos");
-    if (response.statusCode == 200) {
-      list = (json.decode(response.body) as List)
-          .map((data) => new Photo.fromJson(data))
-          .toList();
+    API.fetchData().then((response) {
       setState(() {
+        Iterable list = json.decode(response.body);
+        list = list.map((model) => Photo.fromJson(model)).toList();
         isLoading = false;
       });
-    } else {
-      throw Exception('Failed to load photos');
-    }
+    });
   }
+
+  // var isLoading = false;
+
+  // _fetchData() async {
+  //   setState(() {
+  //     isLoading = true;
+  //   });
+  //   final response =
+  //       await http.get("https://jsonplaceholder.typicode.com/photos");
+  //   if (response.statusCode == 200) {
+  //     list = (json.decode(response.body) as List)
+  //         .map((data) => new Photo.fromJson(data))
+  //         .toList();
+  //     setState(() {
+  //       isLoading = false;
+  //     });
+  //   } else {
+  //     throw Exception('Failed to load photos');
+  //   }
+  // }
+
+  initState() {
+    super.initState();
+    _fetchData();
+  }
+
+  dispose() {
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
