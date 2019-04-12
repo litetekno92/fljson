@@ -64,13 +64,13 @@ class _MainFetchDataState extends State<MainFetchData> {
         appBar: AppBar(
           title: Text("Fetch Data JSON"),
         ),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: RaisedButton(
-            child: new Text("Fetch Data"),
-            onPressed: _fetchData,
-          ),
-        ),
+        // bottomNavigationBar: Padding(
+        //   padding: const EdgeInsets.all(8.0),
+        //   child: RaisedButton(
+        //     child: new Text("Fetch Data"),
+        //     onPressed: _fetchData,
+        //   ),
+        // ),
         body: 
         // isLoading   ? Center(
         //         child: CircularProgressIndicator(),
