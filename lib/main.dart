@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:fljson/photo.dart';
 import 'package:fljson/API.dart';
 
+void main() => runApp(MainFetchData());
+
 class MainFetchData extends StatefulWidget {
   @override
   _MainFetchDataState createState() => _MainFetchDataState();
@@ -51,3 +53,4 @@ class _MainFetchDataState extends State<MainFetchData> {
         );
   }
 }
+
